@@ -95,14 +95,14 @@ public class SwiperView extends View {
         if(swiperObject!=null && swiperObject.getRightBitmap()!=null) {
             int rb_width = swiperObject.getRightBitmap().getWidth(),rb_height = swiperObject.getRightBitmap().getHeight();
             float rb_res = (rb_height*1.0f)/(rb_width*1.0f);
-            float rb_src_width = (w*1.0f)/10,rb_src_height = (w/10)*rb_res;
+            float rb_src_width = (w*1.0f)/8,rb_src_height = (w/8)*rb_res;
             float rb_x = 3*w*0.25f,rb_y = 0.8f*h;
             canvas.drawBitmap(swiperObject.getRightBitmap(),new Rect(0,0,rb_width,rb_height),new RectF(rb_x,rb_y,rb_x+rb_src_width,rb_y+rb_src_width),paint);
         }
         if(swiperObject!=null && swiperObject.getLeftText()!=null) {
             paint.setColor(Color.BLACK);
-            paint.setTextSize(w/40);
-            float tx = w/10,ty = 0.8f*h;
+            paint.setTextSize(w/15);
+            float tx = w/10,ty = 0.88f*h;
             canvas.drawText(swiperObject.getLeftText(),tx,ty,paint);
         }
         paint.setColor(Color.parseColor("#E0E0E0"));

@@ -115,9 +115,10 @@ public class SwiperLayout extends ViewGroup {
         int viewWidth = 3*width/4,viewHeight = height/2;
         int i =0,n = getChildCount();
         for(SwiperView swiperView:swiperViews) {
-            swiperView.layout((int)swiperView.getLeftOfView(),(int)swiperView.getTopOfView(),(int)swiperView.getLeftOfView()+viewWidth,(int)swiperView.getTopOfView()+viewHeight);
+            int gap = (h/120)*(n-i);
+            swiperView.layout((int)swiperView.getLeftOfView(),(int)swiperView.getTopOfView()-gap,(int)swiperView.getLeftOfView()+viewWidth,(int)swiperView.getTopOfView()+viewHeight-gap);
             swiperView.setRotation(swiperView.getRot());
-            swiperView.setScaleX(1+0.05f*(n-i));
+            //swiperView.setScaleX(1+0.05f*(n-i));
             swiperView.setScaleY(1+0.05f*(n-i));
             i++;
         }
@@ -137,36 +138,6 @@ public class SwiperLayout extends ViewGroup {
     }
 
     public boolean onTouchEvent(MotionEvent event) {
-//        if(currentView!=null) {
-//            switch (event.getAction()) {
-//                case MotionEvent.ACTION_DOWN:
-//                    if(!isDown) {
-//                        isDown = true;
-//                        currentView.handleDown(event.getX(),event.getY());
-//                    }
-//                    break;
-//                case MotionEvent.ACTION_MOVE:
-//                    if(isDown) {
-//                        currentView.setInMotion(true);
-//                        currentView.setLeftOfView(event.getX()-currentView.getMeasuredWidth()/2);
-//                    }
-//                    break;
-//                case MotionEvent.ACTION_UP:
-//                    if(isDown) {
-//                        isDown = true;
-//                        if(!(currentView.isAfterScreen(width) || currentView.isBeforeScreen())) {
-//                            currentView.setRot(0);
-//                            currentView.setLeftOfView(currentView.getInitLeft());
-//                            currentView.setTopOfView(currentView.getInitTop());
-//                        }
-//                        else {
-//                            currentView.handleUp();
-//                        }
-//                    }
-//                    break;
-//            }
-//            requestLayout();
-//        }
         if(currentView!=null && scroll && event.getAction() == MotionEvent.ACTION_UP) {
             if(currentView.isAfterScreen(width)) {
                 currentView.startMovingOut(this,1);

@@ -24,6 +24,7 @@ import java.util.Map;
 public class DemoActivity extends AppCompatActivity {
     private List<SwiperObject> swiperObjects = new ArrayList<>();
     int like = 0,dislike=0;
+    private Bitmap rightIconBitmap;
     private final Map<String,Integer> personalitiesMap = new LinkedHashMap<String, Integer>(){{
         put("Barack",R.drawable.barack);
         put("Conte",R.drawable.conte);
@@ -34,9 +35,12 @@ public class DemoActivity extends AppCompatActivity {
     //private final int res[] = {R.drawable.barack,R.drawable.conte,R.drawable.klopp,R.drawable.putin,R.drawable.wenger};
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        rightIconBitmap = BitmapFactory.decodeResource(getResources(),R.drawable.book);
         for(Map.Entry<String,Integer> entry:personalitiesMap.entrySet()) {
             SwiperObject swiperObject = SwiperObject.newInstance(BitmapFactory.decodeResource(getResources(),entry.getValue()));
             final String title = entry.getKey();
+            swiperObject.setLeftText(title);
+            swiperObject.setRightBitmap(rightIconBitmap);
             swiperObject.setListener(new SwiperObjectClickListener() {
                 @Override
                 public void onClick(View view) {
