@@ -60,9 +60,9 @@ public class SwiperLayout extends ViewGroup {
                     swiperView.setInMotion(true);
                     swiperView.setTopOfView(e2.getY() - swiperView.getMeasuredHeight() / 2);
                     if (swiperView.getLeftOfView() < swiperView.getInitLeft()) {
-                        swiperView.setRot(-30);
+                        swiperView.setRot(-AppConstants.ROTATION_CLEAR);
                     } else {
-                        swiperView.setRot(30);
+                        swiperView.setRot(AppConstants.ROTATION_CLEAR);
                     }
                 }
                 requestLayout();
