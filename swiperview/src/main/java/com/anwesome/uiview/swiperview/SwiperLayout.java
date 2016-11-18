@@ -52,8 +52,6 @@ public class SwiperLayout extends ViewGroup {
         }
         public boolean onScroll(MotionEvent e1,MotionEvent e2,float velx,float vely) {
             if(swiperView!=null && isDown) {
-                Log.d("velx:", "" + velx);
-                Log.d("vely:", "" + vely);
                 if (Math.abs(velx) < 10) {
                     scroll = true;
                     swiperView.setLeftOfView(e2.getX() - swiperView.getMeasuredWidth() / 2);
