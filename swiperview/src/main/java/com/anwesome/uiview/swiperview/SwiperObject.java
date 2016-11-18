@@ -8,8 +8,15 @@ import android.graphics.Bitmap;
 public class SwiperObject {
     private Bitmap bitmap;
     private SwiperObjectClickListener listener;
-
+    private String leftText = null;
+    private Bitmap rightBitmap = null;
     private SwipeAction likeAction,disLikeAction;
+    private SwiperObject(Bitmap bitmap) {
+        this.bitmap = bitmap;
+    }
+    public static SwiperObject newInstance(Bitmap bitmap) {
+        return new SwiperObject(bitmap);
+    }
     public Bitmap getBitmap() {
         return bitmap;
     }
@@ -29,6 +36,23 @@ public class SwiperObject {
     public void setSwipeDisLikeAction(SwipeAction disLikeAction) {
         this.disLikeAction = disLikeAction;
     }
+
+    public String getLeftText() {
+        return leftText;
+    }
+
+    public void setLeftText(String leftText) {
+        this.leftText = leftText;
+    }
+
+    public Bitmap getRightBitmap() {
+        return rightBitmap;
+    }
+
+    public void setRightBitmap(Bitmap rightBitmap) {
+        this.rightBitmap = rightBitmap;
+    }
+
     public SwipeAction getLikeAction() {
         return likeAction;
     }
